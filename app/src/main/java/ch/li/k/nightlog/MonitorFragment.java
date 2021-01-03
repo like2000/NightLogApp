@@ -26,15 +26,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import ch.li.k.nightlog.databinding.MonitorFragmentBinding;
 import ch.li.k.lib.DataProvider;
+import ch.li.k.nightlog.databinding.MonitorFragmentBinding;
 
 public class MonitorFragment extends Fragment {
 
-    private static final String FILENAME = "data.csv";
     private static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1;
 
     private static String DIRECTORY;
+    private static String FILENAME = "data.csv";
 
     private final List<StatsModel> modelData = new ArrayList<>();
     private final MonitorAdapter adapter = new MonitorAdapter();
@@ -47,6 +47,7 @@ public class MonitorFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 //        return inflater.inflate(R.layout.fragment_monitor, container, false);
+        FILENAME = getContext().getApplicationInfo().labelRes + "_" + FILENAME;
         if (Build.VERSION.SDK_INT < 29) {
 //            DIRECTORY = requireActivity().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
             DIRECTORY = Environment.getExternalStoragePublicDirectory(
