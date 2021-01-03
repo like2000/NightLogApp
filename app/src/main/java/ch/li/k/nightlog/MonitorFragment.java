@@ -47,7 +47,7 @@ public class MonitorFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 //        return inflater.inflate(R.layout.fragment_monitor, container, false);
-        FILENAME = getContext().getApplicationInfo().labelRes + "_" + FILENAME;
+        FILENAME = getResources().getString(R.string.app_name).replaceAll(" ", "_").toLowerCase() + "_" + FILENAME;
         if (Build.VERSION.SDK_INT < 29) {
 //            DIRECTORY = requireActivity().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
             DIRECTORY = Environment.getExternalStoragePublicDirectory(
@@ -80,10 +80,10 @@ public class MonitorFragment extends Fragment {
         binding.setLifecycleOwner(this);
         binding.setModel(viewModel);
 
-//        initFileStream();
         try {
             readFileInternal();
         } catch (IOException e) {
+            initFileStream();
             initFile();
         }
     }
@@ -116,8 +116,13 @@ public class MonitorFragment extends Fragment {
     }
 
     void initFile() {
-        DataProvider.initFile(DIRECTORY + "/" + FILENAME);
-        Log.i("Info", "Created new file: " + DIRECTORY + "/" + FILENAME);
+        try {
+            DataProvider.initFile(DIRECTORY + "/" + FILENAME);
+            Log.i("Info", "Created new file: " + DIRECTORY + "/" + FILENAME);
+        } catch (IOException exc) {
+            Toast.makeText(getContext(), "Failed to initialize file: " + DIRECTORY + "/" + FILENAME, Toast.LENGTH_SHORT).show();
+            exc.fillInStackTrace();
+        }
     }
 
     void readFileInternal() throws IOException {
@@ -142,12 +147,12 @@ public class MonitorFragment extends Fragment {
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // Continue with overwrite operation
-                        List<String[]> data = StatsViewModel.toStringArrayList(viewModel);
-                        Log.i("Info", DIRECTORY + "/" + FILENAME);
                         try {
+                            Log.i("Info", DIRECTORY + "/" + FILENAME);
+                            List<String[]> data = StatsViewModel.toStringArrayList(viewModel);
                             DataProvider.writeFile(DIRECTORY + "/" + FILENAME, data);
                             Toast.makeText(getContext(), "File saved to: " + DIRECTORY, Toast.LENGTH_SHORT).show();
-                        } catch (IOException e) {
+                        } catch (NullPointerException | IOException e) {
                             e.printStackTrace();
                             Toast.makeText(getContext(), "File save failed!", Toast.LENGTH_SHORT).show();
                         }

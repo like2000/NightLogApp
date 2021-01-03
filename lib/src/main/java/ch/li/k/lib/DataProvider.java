@@ -32,31 +32,27 @@ public class DataProvider {
         return data;
     }
 
-    public static void initFile(String filename) {
-        FileWriter csvWriter = null;
-        try {
-            csvWriter = new FileWriter(filename);
-            // HEADER
-            // ======
-            csvWriter.append("Name");
-            csvWriter.append(",");
-            csvWriter.append("Role");
-            csvWriter.append(",");
-            csvWriter.append("Topic");
-            csvWriter.append(",");
-            csvWriter.append("Time");
-            csvWriter.append("\n");
+    public static void initFile(String filename) throws IOException {
+
+        FileWriter csvWriter = new FileWriter(filename);
+        // HEADER
+        // ======
+        csvWriter.append("Name");
+        csvWriter.append(",");
+        csvWriter.append("Role");
+        csvWriter.append(",");
+        csvWriter.append("Topic");
+        csvWriter.append(",");
+        csvWriter.append("Time");
+        csvWriter.append("\n");
 
 //        for (String[] rowData : data) {
 //            csvWriter.append(String.join(",", rowData));
 //            csvWriter.append("\n");
 //        }
 
-            csvWriter.flush();
-            csvWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        csvWriter.flush();
+        csvWriter.close();
     }
 
     public static void writeFile(String filename, List<String[]> data) throws IOException {

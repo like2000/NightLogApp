@@ -14,6 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 public class StatsViewModel extends AndroidViewModel {
 
@@ -56,7 +57,7 @@ public class StatsViewModel extends AndroidViewModel {
     public static List<String[]> toStringArrayList(StatsViewModel viewModel) {
         ArrayList<String[]> data = new ArrayList<String[]>();
 
-        for (StatsModel row : viewModel.getItemsList().getValue()) {
+        for (StatsModel row : Objects.requireNonNull(viewModel.getItemsList().getValue())) {
             data.add(toStringArray(row));
         }
 
