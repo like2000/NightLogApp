@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_nav_home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:iconTint="@color/blue_grey_100"
+        android:title="@string/navmenu_home" />
+    <item
+        android:id="@+id/bottom_nav_gallery"
+        android:icon="@drawable/ic_baseline_image_24"
+        android:iconTint="@color/blue_grey_100"
+        android:title="@string/navmenu_gallery" />
+    <item
+        android:id="@+id/bottom_nav_list"
+        android:icon="@drawable/ic_baseline_list_alt_24"
+        android:iconTint="@color/blue_grey_100"
+        android:title="@string/navmenu_list" />
+</menu>
