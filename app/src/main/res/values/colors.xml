@@ -329,8 +329,17 @@
     <!--    <color name="colorPrimary">#6200EE</color>-->
     <!--    <color name="colorPrimaryDark">#3700B3</color>-->
     <!--    <color name="colorAccent">#03DAC5</color>-->
-    <color name="colorPrimary">@color/indigo_500</color>
-    <color name="colorPrimaryDark">@color/indigo_800</color>
-    <color name="colorAccent">@color/amber_A400</color>
+    <!--    <color name="colorPrimary">@color/indigo_500</color>-->
+    <!--    <color name="colorPrimaryDark">@color/indigo_800</color>-->
+    <!--    <color name="colorAccent">@color/amber_A400</color>-->
+
+    <color name="primaryColor">#283593</color>
+    <color name="primaryLightColor">#5f5fc4</color>
+    <color name="primaryDarkColor">#001064</color>
+    <color name="secondaryColor">#ffc107</color>
+    <color name="secondaryLightColor">#fff350</color>
+    <color name="secondaryDarkColor">#c79100</color>
+    <color name="primaryTextColor">#ffffff</color>
+    <color name="secondaryTextColor">#000000</color>
 </resources>
 

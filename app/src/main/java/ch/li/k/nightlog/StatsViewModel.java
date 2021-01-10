@@ -1,6 +1,7 @@
 package ch.li.k.nightlog;
 
 import android.app.Application;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.lifecycle.MutableLiveData;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,9 +71,17 @@ public class StatsViewModel extends AndroidViewModel {
         return total;
     }
 
+    //    @InverseBindingAdapter(attribute = "date")
     public MutableLiveData<LocalDate> getDate() {
         return date;
     }
+
+    //    @BindingAdapter("date")
+    public void setDate(EditText view, String date) {
+        System.out.println("Print date: " + date);
+        view.setText(date);
+    }
+
 
     public MutableLiveData<LocalDateTime> getStart() {
         return start;
@@ -116,7 +126,12 @@ public class StatsViewModel extends AndroidViewModel {
     }
 
     public void newDate() {
-        this.getDate().setValue(LocalDate.now());
+        Locale.setDefault(Locale.GERMANY);
+        LocalTime time = LocalTime.now();
+        if (time.getHour() < 5)
+            this.getDate().setValue(LocalDate.now().minusDays(1));
+        else
+            this.getDate().setValue(LocalDate.now());
     }
 
     public void newTime() {

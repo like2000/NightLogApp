@@ -61,7 +61,7 @@
                     android:focusable="auto"
                     android:focusableInTouchMode="true"
                     android:importantForAutofill="no"
-                    android:inputType="date"
+                    android:inputType="date|text"
                     android:paddingVertical="6dp"
                     android:singleLine="true"
                     android:text="@{model.date.format(DateTimeFormatter.ofPattern(`EEE dd. MMM yyyy`).withLocale(Locale.GERMANY))}"

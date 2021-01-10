@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import ch.li.k.nightlog.databinding.MonitorItemBinding;
@@ -15,7 +14,7 @@ import ch.li.k.nightlog.databinding.MonitorItemBinding;
 public class MonitorAdapter extends RecyclerView.Adapter<MonitorAdapter.MonitorViewHolder> {
 
     public int selectedRow = RecyclerView.NO_POSITION;
-    private List<StatsModel> monitorItemsList = new ArrayList<>();
+    private List<StatsModel> monitorItemsList;// = new ArrayList<>();
 
     @NonNull
     @Override
