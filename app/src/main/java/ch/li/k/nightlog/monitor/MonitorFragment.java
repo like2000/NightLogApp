@@ -1,4 +1,4 @@
-package ch.li.k.nightlog;
+package ch.li.k.nightlog.monitor;
 
 import android.Manifest;
 import android.content.DialogInterface;
@@ -27,6 +27,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ch.li.k.lib.DataProvider;
+import ch.li.k.nightlog.R;
+import ch.li.k.nightlog.stats.StatsModel;
+import ch.li.k.nightlog.stats.StatsViewModel;
 import ch.li.k.nightlog.databinding.MonitorFragmentBinding;
 
 public class MonitorFragment extends Fragment {

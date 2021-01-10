@@ -1,4 +1,4 @@
-package ch.li.k.nightlog;
+package ch.li.k.nightlog.monitor;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import ch.li.k.nightlog.stats.StatsModel;
 import ch.li.k.nightlog.databinding.MonitorItemBinding;
 
 public class MonitorAdapter extends RecyclerView.Adapter<MonitorAdapter.MonitorViewHolder> {

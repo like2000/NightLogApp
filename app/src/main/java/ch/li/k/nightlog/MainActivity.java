@@ -11,6 +11,8 @@ import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import ch.li.k.nightlog.monitor.MonitorFragment;
+
 public class MainActivity extends AppCompatActivity {
 
     private final HomeFragment homeFragment = new HomeFragment();

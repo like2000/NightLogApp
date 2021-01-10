@@ -1,4 +1,4 @@
-package ch.li.k.nightlog;
+package ch.li.k.nightlog.stats;
 
 public class StatsModel {
 

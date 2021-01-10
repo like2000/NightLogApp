@@ -7,13 +7,13 @@
 
         <variable
             name="model"
-            type="ch.li.k.nightlog.StatsViewModel" />
+            type="ch.li.k.nightlog.stats.StatsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MonitorFragment">
+        tools:context=".monitor.MonitorFragment">
 
         <LinearLayout
             android:id="@+id/headerLine"

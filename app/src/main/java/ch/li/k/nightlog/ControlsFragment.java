@@ -25,6 +25,7 @@ import java.time.format.DateTimeParseException;
 import java.util.Locale;
 
 import ch.li.k.nightlog.databinding.ControlsFragmentBinding;
+import ch.li.k.nightlog.stats.StatsViewModel;
 
 public class ControlsFragment extends Fragment implements View.OnFocusChangeListener {
 

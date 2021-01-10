@@ -5,7 +5,7 @@
 
         <variable
             name="model"
-            type="ch.li.k.nightlog.StatsModel" />
+            type="ch.li.k.nightlog.stats.StatsModel" />
     </data>
 
     <LinearLayout

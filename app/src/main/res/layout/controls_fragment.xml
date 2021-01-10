@@ -11,7 +11,7 @@
 
         <variable
             name="model"
-            type="ch.li.k.nightlog.StatsViewModel" />
+            type="ch.li.k.nightlog.stats.StatsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
