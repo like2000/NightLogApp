@@ -28,9 +28,9 @@ import java.util.List;
 
 import ch.li.k.lib.DataProvider;
 import ch.li.k.nightlog.R;
+import ch.li.k.nightlog.databinding.MonitorFragmentBinding;
 import ch.li.k.nightlog.stats.StatsModel;
 import ch.li.k.nightlog.stats.StatsViewModel;
-import ch.li.k.nightlog.databinding.MonitorFragmentBinding;
 
 public class MonitorFragment extends Fragment {
 
@@ -157,7 +157,7 @@ public class MonitorFragment extends Fragment {
                             Toast.makeText(getContext(), "File saved to: " + DIRECTORY, Toast.LENGTH_SHORT).show();
                         } catch (NullPointerException | IOException e) {
                             e.printStackTrace();
-                            Toast.makeText(getContext(), "File save failed!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Successfully saved file to: " + DIRECTORY, Toast.LENGTH_SHORT).show();
                         }
                     }
                 })

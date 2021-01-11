@@ -17,6 +17,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -46,7 +47,7 @@ public class ControlsFragment extends Fragment implements View.OnFocusChangeList
         binding = ControlsFragmentBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(requireActivity()).get(StatsViewModel.class);
 
-        viewModel.getStop().observe(getViewLifecycleOwner(), localDateTime -> viewModel.computeStop());
+//        viewModel.getStop().observe(getViewLifecycleOwner(), localDateTime -> viewModel.computeStop());
 
         binding.setLifecycleOwner(this);
         binding.setModel(viewModel);
@@ -109,33 +110,37 @@ public class ControlsFragment extends Fragment implements View.OnFocusChangeList
                 e.printStackTrace();
             }
         });
-        binding.textViewStop.setOnFocusChangeListener((view, b) -> {
+        binding.textViewStop.setOnFocusChangeListener((view, hasFocus) -> {
             LocalDateTime value = null;
-            viewModel.getStopActive().setValue(b);
-            try {
-                Editable text = ((EditText) view).getText();
-                LocalTime time = LocalTime.parse(text, DateTimeFormatter.ofPattern("HH:mm:ss", Locale.GERMANY));
-                value = viewModel.getDate().getValue().atTime(time);
-                viewModel.getStop().setValue(value);
-            } catch (DateTimeParseException e) {
-                Log.w("Warning", "Bad parse string!");
-                viewModel.getStop().setValue(null);
-                e.printStackTrace();
+            viewModel.getStopActive().setValue(hasFocus);
+            if (!hasFocus) {
+                try {
+                    Editable text = ((EditText) view).getText();
+                    LocalTime time = LocalTime.parse(text, DateTimeFormatter.ofPattern("HH:mm:ss", Locale.GERMANY));
+                    value = viewModel.getDate().getValue().atTime(time);
+                    viewModel.getStop().setValue(value);
+                    viewModel.computeTotal();
+                } catch (DateTimeParseException e) {
+                    Log.w("Warning", "Bad parse string!");
+                    viewModel.getStop().setValue(null);
+                    e.printStackTrace();
+                }
             }
-
         });
-        binding.textViewStart.setOnFocusChangeListener((view, b) -> {
+        binding.textViewStart.setOnFocusChangeListener((view, hasFocus) -> {
             LocalDateTime value = null;
-            viewModel.getStartActive().setValue(b);
-            try {
-                Editable text = ((EditText) view).getText();
-                LocalTime time = LocalTime.parse(text, DateTimeFormatter.ofPattern("HH:mm:ss", Locale.GERMANY));
-                value = viewModel.getDate().getValue().atTime(time);
-                viewModel.getStart().setValue(value);
-            } catch (DateTimeParseException e) {
-                Log.w("Warning", "Bad parse string!");
-                viewModel.getStart().setValue(null);
-                e.printStackTrace();
+            viewModel.getStartActive().setValue(hasFocus);
+            if (!hasFocus) {
+                try {
+                    Editable text = ((EditText) view).getText();
+                    LocalTime time = LocalTime.parse(text, DateTimeFormatter.ofPattern("HH:mm:ss", Locale.GERMANY));
+                    value = viewModel.getDate().getValue().atTime(time);
+                    viewModel.getStart().setValue(value);
+                } catch (DateTimeParseException e) {
+                    Log.w("Warning", "Bad parse string!");
+                    viewModel.getStart().setValue(null);
+                    e.printStackTrace();
+                }
             }
         });
 

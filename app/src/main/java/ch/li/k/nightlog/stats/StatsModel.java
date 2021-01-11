@@ -7,7 +7,7 @@ public class StatsModel {
     private final String start;
     private final String total;
 
-    StatsModel(String date, String start, String stop, String total) {
+    public StatsModel(String date, String start, String stop, String total) {
         this.date = date;
         this.start = start;
         this.stop = stop;

@@ -114,15 +114,19 @@ public class StatsViewModel extends AndroidViewModel {
     public void computeStop() {
         getStop().setValue(LocalDateTime.now());
 
-        LocalDateTime start = getStart().getValue();
-        LocalDateTime stop = getStop().getValue();
         try {
-            Duration duration = Duration.between(start, stop);
-            getTotal().setValue(String.format(Locale.GERMANY, "%d:%02d:%02d",
-                    duration.getSeconds() / 3600, (duration.getSeconds() % 3600) / 60, (duration.getSeconds() % 60)));
+            computeTotal();
         } catch (NullPointerException err) {
             Thread.currentThread().getStackTrace();
         }
+    }
+
+    public void computeTotal() {
+        LocalDateTime stop = getStop().getValue();
+        LocalDateTime start = getStart().getValue();
+        Duration duration = Duration.between(start, stop);
+        getTotal().setValue(String.format(Locale.GERMANY, "%d:%02d:%02d",
+                duration.getSeconds() / 3600, (duration.getSeconds() % 3600) / 60, (duration.getSeconds() % 60)));
     }
 
     public void newDate() {
