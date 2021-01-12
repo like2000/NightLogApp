@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import ch.li.k.nightlog.databinding.ItemMonitorBinding;
 import ch.li.k.nightlog.stats.StatsModel;
-import ch.li.k.nightlog.databinding.MonitorItemBinding;
 
 public class MonitorAdapter extends RecyclerView.Adapter<MonitorAdapter.MonitorViewHolder> {
 
@@ -20,7 +20,7 @@ public class MonitorAdapter extends RecyclerView.Adapter<MonitorAdapter.MonitorV
     @NonNull
     @Override
     public MonitorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        MonitorItemBinding binding = MonitorItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        ItemMonitorBinding binding = ItemMonitorBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
 
         return new MonitorViewHolder(binding);
     }
@@ -57,9 +57,9 @@ public class MonitorAdapter extends RecyclerView.Adapter<MonitorAdapter.MonitorV
     }
 
     public class MonitorViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private final MonitorItemBinding binding;
+        private final ItemMonitorBinding binding;
 
-        public MonitorViewHolder(MonitorItemBinding binding) {
+        public MonitorViewHolder(ItemMonitorBinding binding) {
             super(binding.getRoot());
 
             binding.getRoot().setOnClickListener(this);

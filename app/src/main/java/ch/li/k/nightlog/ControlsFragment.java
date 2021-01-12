@@ -17,7 +17,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -25,13 +24,13 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Locale;
 
-import ch.li.k.nightlog.databinding.ControlsFragmentBinding;
+import ch.li.k.nightlog.databinding.FragmentControlsBinding;
 import ch.li.k.nightlog.stats.StatsViewModel;
 
 public class ControlsFragment extends Fragment implements View.OnFocusChangeListener {
 
     private StatsViewModel viewModel;
-    private ControlsFragmentBinding binding;
+    private FragmentControlsBinding binding;
 
 
     @Override
@@ -44,7 +43,7 @@ public class ControlsFragment extends Fragment implements View.OnFocusChangeList
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_controls, container, false);
 
-        binding = ControlsFragmentBinding.inflate(inflater, container, false);
+        binding = FragmentControlsBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(requireActivity()).get(StatsViewModel.class);
 
 //        viewModel.getStop().observe(getViewLifecycleOwner(), localDateTime -> viewModel.computeStop());

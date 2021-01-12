@@ -28,7 +28,7 @@ import java.util.List;
 
 import ch.li.k.lib.DataProvider;
 import ch.li.k.nightlog.R;
-import ch.li.k.nightlog.databinding.MonitorFragmentBinding;
+import ch.li.k.nightlog.databinding.FragmentMonitorBinding;
 import ch.li.k.nightlog.stats.StatsModel;
 import ch.li.k.nightlog.stats.StatsViewModel;
 
@@ -42,7 +42,7 @@ public class MonitorFragment extends Fragment {
     private final List<StatsModel> modelData = new ArrayList<>();
     private final MonitorAdapter adapter = new MonitorAdapter();
 
-    private MonitorFragmentBinding binding;
+    private FragmentMonitorBinding binding;
     private RecyclerView recyclerView;
     private StatsViewModel viewModel;
 
@@ -57,7 +57,7 @@ public class MonitorFragment extends Fragment {
                     Environment.DIRECTORY_DOWNLOADS).toString();
         } else throw new RuntimeException("Incompatible SDK version >= 29");
 
-        binding = MonitorFragmentBinding.inflate(inflater, container, false);
+        binding = FragmentMonitorBinding.inflate(inflater, container, false);
         recyclerView = binding.recyclerView;
 
         return binding.getRoot();

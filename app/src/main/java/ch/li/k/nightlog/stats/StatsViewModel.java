@@ -125,6 +125,8 @@ public class StatsViewModel extends AndroidViewModel {
         LocalDateTime stop = getStop().getValue();
         LocalDateTime start = getStart().getValue();
         Duration duration = Duration.between(start, stop);
+        if (duration.isNegative())
+            duration = duration.plusHours(24);
         getTotal().setValue(String.format(Locale.GERMANY, "%d:%02d:%02d",
                 duration.getSeconds() / 3600, (duration.getSeconds() % 3600) / 60, (duration.getSeconds() % 60)));
     }
